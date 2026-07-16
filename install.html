@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安装 ShareProbe</title>
+<style>
+  :root{
+    --bg:#f2f2f7; --card:#ffffff; --label:#000; --label2:rgba(60,60,67,.6);
+    --blue:#007aff; --sep:rgba(60,60,67,.14);
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; min-height:100vh; background:var(--bg); color:var(--label);
+    font-family:-apple-system,"SF Pro Text","SF Pro Display",system-ui,"PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center; padding:28px;
+  }
+  .card{
+    width:100%; max-width:420px; background:var(--card); border-radius:22px;
+    padding:30px 24px 26px; text-align:center;
+    box-shadow:0 20px 50px -24px rgba(0,0,0,.25);
+  }
+  .icon{
+    width:82px; height:82px; border-radius:19px; margin:0 auto 16px;
+    background:linear-gradient(160deg,#3b9bff,#0060df);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px -6px rgba(0,96,223,.5);
+  }
+  .icon svg{ width:44px; height:44px; }
+  h1{ font-size:24px; font-weight:700; letter-spacing:-.5px; margin:0 0 4px; }
+  .sub{ font-size:14px; color:var(--label2); margin:0 0 22px; }
+  .btn{
+    display:block; text-decoration:none; background:var(--blue); color:#fff;
+    font-size:17px; font-weight:600; padding:15px; border-radius:14px;
+    letter-spacing:.2px; transition:opacity .2s;
+  }
+  .btn:active{ opacity:.7; }
+  .steps{
+    text-align:left; margin:24px 0 0; padding:0; list-style:none;
+    border-top:1px solid var(--sep);
+  }
+  .steps li{
+    display:flex; gap:12px; padding:14px 2px; border-bottom:1px solid var(--sep);
+    font-size:14px; line-height:1.5; color:var(--label);
+  }
+  .steps .n{
+    flex:0 0 auto; width:22px; height:22px; border-radius:11px; background:var(--blue);
+    color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  .steps b{ font-weight:600; }
+  .foot{ font-size:12px; color:var(--label2); line-height:1.6; margin:18px 0 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
+        <path d="M12 3v12" stroke-linecap="round"/>
+        <path d="M7.5 10.5 12 15l4.5-4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 19h14" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>ShareProbe</h1>
+    <p class="sub">点击下方按钮安装到你的 iPhone</p>
+
+    <a class="btn" href="itms-services://?action=download-manifest&amp;url=https://aimoment29.github.io/ShareProbe-dist/manifest.plist">安装 ShareProbe</a>
+
+    <ol class="steps">
+      <li><span class="n">1</span><span>请用 <b>Safari</b> 打开本页（微信里点右上角「···」→「在 Safari 中打开」）</span></li>
+      <li><span class="n">2</span><span>点上面的 <b>安装</b>，弹窗里再点「安装」，回桌面等它装好</span></li>
+      <li><span class="n">3</span><span>打开前先去 <b>设置 → 通用 → VPN与设备管理</b> → 信任开发者证书（只需一次）</span></li>
+    </ol>
+
+    <p class="foot">仅支持在 iPhone 的 Safari 中安装。<br>若提示"无法安装"，多为本机未在开发者账号登记，请把设备 UDID 发给开发者登记后重试。</p>
+  </div>
+</body>
+</html>
