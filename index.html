@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIMoment · App 分发</title>
+<style>
+  :root{ --bg:#f2f2f7; --card:#fff; --label:#000; --label2:rgba(60,60,67,.6); --blue:#007aff; --sep:rgba(60,60,67,.12); }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; background:var(--bg); color:var(--label);
+    font-family:-apple-system,"SF Pro Text",system-ui,"PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; padding:28px; }
+  .wrap{ width:100%; max-width:440px; }
+  h1{ font-size:26px; font-weight:700; letter-spacing:-.5px; margin:0 0 4px; }
+  .sub{ font-size:14px; color:var(--label2); margin:0 0 22px; }
+  .app{ display:flex; align-items:center; gap:14px; background:var(--card); border-radius:16px;
+    padding:16px; text-decoration:none; color:inherit; margin-bottom:12px; }
+  .icon{ width:52px; height:52px; border-radius:13px; flex:0 0 auto;
+    background:linear-gradient(160deg,#3b9bff,#0060df); display:flex; align-items:center; justify-content:center; }
+  .icon svg{ width:28px; height:28px; }
+  .app .t{ flex:1 1 auto; }
+  .app .t b{ font-size:16px; font-weight:600; letter-spacing:-.2px; display:block; }
+  .app .t span{ font-size:13px; color:var(--label2); }
+  .app .chev{ color:#c4c4c8; font-size:20px; }
+  .foot{ font-size:12px; color:var(--label2); text-align:center; margin-top:18px; line-height:1.6; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>AIMoment · App 分发</h1>
+    <p class="sub">在 iPhone 的 Safari 中打开对应 App 安装</p>
+
+    <a class="app" href="shareprobe/install.html">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v12" stroke-linecap="round"/><path d="M7.5 10.5 12 15l4.5-4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke-linecap="round"/></svg>
+      </span>
+      <span class="t"><b>ShareProbe</b><span>接收分享的文件 / 链接 · 探针</span></span>
+      <span class="chev">›</span>
+    </a>
+
+    <p class="foot">仅限已登记设备安装（Ad Hoc）。<br>安装后到「设置 → 通用 → VPN与设备管理」信任证书。</p>
+  </div>
+</body>
+</html>
