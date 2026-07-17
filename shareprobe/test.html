@@ -11,74 +11,123 @@
   body{ margin:0; min-height:100vh; background:var(--bg); color:var(--label);
         font-family:-apple-system,"SF Pro Text",system-ui,"PingFang SC",sans-serif;
         -webkit-font-smoothing:antialiased; padding:28px 20px 40px; }
-  .wrap{ max-width:440px; margin:0 auto; }
+  .wrap{ max-width:460px; margin:0 auto; }
   h1{ font-size:24px; font-weight:700; letter-spacing:-.5px; margin:0 0 6px; }
-  .sub{ font-size:14px; color:var(--label2); line-height:1.5; margin:0 0 22px; }
+  .sub{ font-size:14px; color:var(--label2); line-height:1.55; margin:0 0 18px; }
   .tip{ background:#fff8e1; border:1px solid #ffe08a; border-radius:12px;
         padding:12px 14px; font-size:13px; line-height:1.6; margin:0 0 20px; }
-  a.item{ display:flex; align-items:center; gap:14px; background:var(--card);
-          border-radius:16px; padding:16px; text-decoration:none; color:inherit;
-          margin-bottom:12px; transition:opacity .15s; }
-  a.item:active{ opacity:.6; }
-  .emo{ width:48px; height:48px; border-radius:12px; flex:0 0 auto; display:flex;
-        align-items:center; justify-content:center; font-size:26px; background:#eef1f6; }
-  .t{ flex:1 1 auto; min-width:0; }
-  .t b{ display:block; font-size:16px; font-weight:600; letter-spacing:-.2px; }
-  .t code{ display:block; font-family:"SF Mono",ui-monospace,Menlo,monospace;
-           font-size:11.5px; color:var(--label2); margin-top:3px;
-           white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .chev{ color:#c4c4c8; font-size:20px; }
-  .foot{ font-size:12px; color:var(--label2); line-height:1.7; margin-top:22px; }
-  .foot code{ font-family:"SF Mono",ui-monospace,Menlo,monospace; }
+
+  .item{ background:var(--card); border-radius:16px; padding:14px; margin-bottom:12px; }
+  .head{ display:flex; align-items:center; gap:12px; }
+  .emo{ width:44px; height:44px; border-radius:11px; flex:0 0 auto; display:flex;
+        align-items:center; justify-content:center; font-size:24px; background:#eef1f6; }
+  .head b{ font-size:16px; font-weight:600; letter-spacing:-.2px; }
+
+  /* URL：可长按全选，也能横向滚动看全 */
+  code{ display:block; margin:10px 0 12px; padding:10px 12px; background:#f2f3f7;
+        border-radius:9px; font-family:"SF Mono",ui-monospace,Menlo,monospace;
+        font-size:12px; color:#3a3a3c; white-space:nowrap; overflow-x:auto;
+        user-select:all; -webkit-user-select:all; }
+
+  .acts{ display:flex; gap:10px; }
+  .go, .cp{ flex:1; text-align:center; padding:11px; border-radius:11px;
+            font-size:15px; font-weight:600; text-decoration:none; border:0;
+            font-family:inherit; cursor:pointer; transition:opacity .15s; }
+  .go{ background:var(--blue); color:#fff; }
+  .cp{ background:#eef2f8; color:var(--blue); }
+  .go:active, .cp:active{ opacity:.6; }
+  .cp.done{ background:#e4f7ea; color:#1c8b3c; }
+
+  .foot{ font-size:12.5px; color:var(--label2); line-height:1.75; margin-top:22px; }
+  .foot code{ display:inline; padding:2px 5px; margin:0; white-space:normal; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>快速打开测试</h1>
-  <p class="sub">点下面任意一条 → 会唤起 <b>ShareProbe</b> 并<b>执行对应动作</b>。<br>
-     这就是「链接触发 App 里的函数」——和 <code>alipay://</code> 同一个机制。</p>
+  <p class="sub">点【打开】→ 唤起 <b>ShareProbe</b> 并<b>执行对应动作</b>。<br>
+     这就是「链接触发 App 里的函数」，和 <code style="display:inline;padding:2px 5px;">alipay://</code> 同一个机制。</p>
 
   <div class="tip">
-    ⚠️ 请用 <b>Safari</b> 打开本页（微信内置浏览器会拦截自定义链接）。<br>
-    首次点击会问「是否打开 ShareProbe」→ 点<b>打开</b>。
+    首次点击会问「是否打开 ShareProbe」→ 点<b>打开</b>。<br>
+    ⚠️ <b>别在微信里打开本页</b>（内置浏览器会拦自定义链接），用 Safari 或 Chrome。
   </div>
 
-  <a class="item" href="shareprobe://smile">
-    <span class="emo">😄</span>
-    <span class="t"><b>显示笑脸</b><code>shareprobe://smile</code></span>
-    <span class="chev">›</span>
-  </a>
+  <div class="item">
+    <div class="head"><span class="emo">😄</span><b>显示笑脸</b></div>
+    <code>shareprobe://smile</code>
+    <div class="acts">
+      <a class="go" href="shareprobe://smile">打开</a>
+      <button class="cp" data-u="shareprobe://smile">复制链接</button>
+    </div>
+  </div>
 
-  <a class="item" href="shareprobe://emoji?e=%F0%9F%8E%89">
-    <span class="emo">🎉</span>
-    <span class="t"><b>显示彩带（带参数）</b><code>shareprobe://emoji?e=🎉</code></span>
-    <span class="chev">›</span>
-  </a>
+  <div class="item">
+    <div class="head"><span class="emo">🎉</span><b>显示彩带（带参数）</b></div>
+    <code>shareprobe://emoji?e=🎉</code>
+    <div class="acts">
+      <a class="go" href="shareprobe://emoji?e=%F0%9F%8E%89">打开</a>
+      <button class="cp" data-u="shareprobe://emoji?e=🎉">复制链接</button>
+    </div>
+  </div>
 
-  <a class="item" href="shareprobe://emoji?e=%F0%9F%9A%80">
-    <span class="emo">🚀</span>
-    <span class="t"><b>显示火箭（换个参数试试）</b><code>shareprobe://emoji?e=🚀</code></span>
-    <span class="chev">›</span>
-  </a>
+  <div class="item">
+    <div class="head"><span class="emo">🚀</span><b>显示火箭（换个参数）</b></div>
+    <code>shareprobe://emoji?e=🚀</code>
+    <div class="acts">
+      <a class="go" href="shareprobe://emoji?e=%F0%9F%9A%80">打开</a>
+      <button class="cp" data-u="shareprobe://emoji?e=🚀">复制链接</button>
+    </div>
+  </div>
 
-  <a class="item" href="shareprobe://alert?msg=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%98%AF%E4%BB%8E%E9%93%BE%E6%8E%A5%E9%87%8C%E4%BC%A0%E8%BF%9B%E6%9D%A5%E7%9A%84%E6%96%87%E5%AD%97%E3%80%82">
-    <span class="emo">💬</span>
-    <span class="t"><b>弹出对话框（传文字进去）</b><code>shareprobe://alert?msg=你好！…</code></span>
-    <span class="chev">›</span>
-  </a>
+  <div class="item">
+    <div class="head"><span class="emo">💬</span><b>弹出对话框（传文字）</b></div>
+    <code>shareprobe://alert?msg=你好！我是从链接传进来的文字。</code>
+    <div class="acts">
+      <a class="go" href="shareprobe://alert?msg=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%98%AF%E4%BB%8E%E9%93%BE%E6%8E%A5%E4%BC%A0%E8%BF%9B%E6%9D%A5%E7%9A%84%E6%96%87%E5%AD%97%E3%80%82">打开</a>
+      <button class="cp" data-u="shareprobe://alert?msg=你好！我是从链接传进来的文字。">复制链接</button>
+    </div>
+  </div>
 
-  <a class="item" href="shareprobe://pay?amount=99&amp;to=alice">
-    <span class="emo">🔗</span>
-    <span class="t"><b>只解析参数（看 App 里的记录）</b><code>shareprobe://pay?amount=99&to=alice</code></span>
-    <span class="chev">›</span>
-  </a>
+  <div class="item">
+    <div class="head"><span class="emo">🔗</span><b>只解析参数（没写动作）</b></div>
+    <code>shareprobe://pay?amount=99&amp;to=alice</code>
+    <div class="acts">
+      <a class="go" href="shareprobe://pay?amount=99&amp;to=alice">打开</a>
+      <button class="cp" data-u="shareprobe://pay?amount=99&to=alice">复制链接</button>
+    </div>
+  </div>
 
   <p class="foot">
-    <b>怎么看懂：</b><code>shareprobe://</code> 后面的 <code>smile</code>/<code>alert</code>/<code>pay</code>
-    是「要干什么」，<code>?</code> 后面是「参数」。<br>
-    App 收到后交给 <code>handleScheme()</code> 处理 —— 你以后把里面换成自己的业务逻辑即可。<br>
-    最后一条 <code>pay</code> 没写动作，所以只会在 App 里记录一条、把参数列出来。
+    <b>怎么看懂：</b><code>shareprobe://</code> 后面的 <code>smile</code> / <code>alert</code> / <code>pay</code>
+    是「要干什么」，<code>?</code> 后面是「参数」。App 收到后交给 <code>handleScheme()</code> 处理
+    —— 以后把里面换成你自己的业务逻辑即可。<br>
+    最后一条 <code>pay</code> 没写动作，所以只会在 App 里记录一条、把参数列出来。<br><br>
+    <b>复制来的链接可以粘到哪：</b>备忘录（会变成可点链接）、Safari 地址栏、
+    或任何你想放这个入口的地方 —— 和支付宝把 <code>alipay://</code> 放在商家页面上是一回事。
   </p>
 </div>
+
+<script>
+  document.querySelectorAll('.cp').forEach(function (btn) {
+    btn.addEventListener('click', async function () {
+      var url = btn.dataset.u;
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (e) {
+        // 兜底：老浏览器 / 非安全上下文
+        var ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(ta);
+      }
+      var old = btn.textContent;
+      btn.textContent = '✓ 已复制';
+      btn.classList.add('done');
+      setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1500);
+    });
+  });
+</script>
 </body>
 </html>
