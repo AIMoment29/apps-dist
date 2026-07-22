@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安装 MultiAI</title>
+<style>
+  :root{
+    --bg:#F7F4EC; --card:#ffffff; --label:#1A1A1A; --label2:#6B655C;
+    --accent:#8A5A2B; --sep:#E4DED2;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; min-height:100vh; background:var(--bg); color:var(--label);
+    font-family:-apple-system,"SF Pro Text",system-ui,"PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center; padding:28px;
+  }
+  .card{
+    width:100%; max-width:420px; background:var(--card); border-radius:22px;
+    padding:30px 24px 26px; text-align:center; border:1px solid var(--sep);
+    box-shadow:0 20px 50px -24px rgba(0,0,0,.18);
+  }
+  .icon{
+    width:82px; height:82px; border-radius:19px; margin:0 auto 16px;
+    background:linear-gradient(160deg,#C97B4A,#8A5A2B);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:34px; font-weight:700; letter-spacing:-1px;
+  }
+  h1{ font-size:22px; margin:0 0 4px; }
+  .ver{ color:var(--label2); font-size:14px; margin-bottom:22px; }
+  a.btn{
+    display:block; background:var(--accent); color:#fff; text-decoration:none;
+    border-radius:14px; padding:15px 0; font-size:17px; font-weight:600;
+  }
+  .tips{ text-align:left; color:var(--label2); font-size:13px; line-height:1.75;
+         margin-top:22px; border-top:1px solid var(--sep); padding-top:16px; }
+  .tips b{ color:var(--label); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">AI</div>
+  <h1>MultiAI</h1>
+  <div class="ver">当前版本 <b>0.1+2</b></div>
+  <a class="btn" href="itms-services://?action=download-manifest&amp;url=https://aimoment29.github.io/apps-dist/multiai/manifest.plist">安装</a>
+  <div class="tips">
+    1. 必须在 <b>Safari</b> 打开本页（微信里点「···」→ 在浏览器打开）<br>
+    2. 点「安装」→ 回桌面等待装完<br>
+    3. 打不开时：设置 → 通用 → <b>VPN与设备管理</b> → 信任证书；
+       或 隐私与安全性 → <b>开发者模式</b> → 开启<br>
+    4. 「Unable to Verify」→ 关 VPN 或换蜂窝网络再点图标<br>
+    5. 装好后在 App 设置里把中继地址填 <b>wss://askai.defg.uk</b>
+  </div>
+</div>
+</body>
+</html>
