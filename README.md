@@ -58,10 +58,29 @@ https://github.com/AIMoment29/apps-dist/releases/download/multiai-latest/MultiAI
 - Apple：Team `UNJU6RW893` 的成员，角色 **Admin**（Ad Hoc 要用 Distribution 证书，
   Developer 角色权限不够）
 
-**2. 抄一份发版脚本**
+**2. 用模板**
 
-拿 `multiai-apple/tool/build_adhoc.sh` 或 `ShareProbe/tool/build_adhoc.sh` 改，
-需要动的就这几个：
+仓库里有现成的：[`template/build_adhoc.sh`](template/build_adhoc.sh)。
+可变的东西全在文件头「改这里」那一段，正常只需动这几行：
+
+```bash
+APP_NAME="MyApp"                  # Xcode 工程名与 scheme 名
+APP_SLUG="myapp"                  # apps-dist 子目录名，也是 release tag 前缀
+BUNDLE="com.example.myapp"
+TITLE="我的应用"                   # 安装页上显示的名字
+ICON_TEXT="M"                     # 安装页图标里的字
+TEAM="UNJU6RW893"                 # 不用改
+XCODE=/Applications/Xcode.app/Contents/Developer   # 你机器上 Xcode 的位置
+GIT_EMAIL="you@example.com"       # 提交署名
+GIT_NAME="Your Name"
+```
+
+放到你项目的 `tool/build_adhoc.sh`，然后 `bash tool/build_adhoc.sh` 就能发版。
+
+<details>
+<summary>如果想从 MultiAI/ShareProbe 的脚本直接改（不推荐）</summary>
+
+需要动的：
 
 ```bash
 DIST="${APPS_DIST_DIR:-$HOME/AIMoment/apps-dist}"   # 不用改，大家共用这一份 clone
@@ -72,7 +91,10 @@ APPBASE="https://aimoment29.github.io/apps-dist/你的app"   # ← 改
 BUNDLE=com.aimoment.你的app                           # ← 改
 ```
 
-再把 `-scheme`、页面标题这些换成你自己的。
+再把 `-scheme`、页面标题、安装页里的项目专属文案换成你自己的 ——
+散落在整个文件里十几处，容易漏，所以还是建议用模板。
+
+</details>
 
 **3. 上传用这两句**
 
