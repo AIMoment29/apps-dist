@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Ad Hoc 发版模板：打 ipa → 传 GitHub Releases → 更新 apps-dist 上的安装页。
 #
-# 从 MultiAI 的发版脚本改的，可变的东西全提到了下面「改这里」那一段，
-# 正常情况下你只需要动那 8 行。
+# 可变的东西全提到了下面「改这里」那一段，正常只需要动那 9 行。
 #
-# 用法：  bash tool/build_adhoc.sh          # 正式安装页 install.html
-#         bash tool/build_adhoc.sh debug    # 测试安装页 install-debug.html（不动正式页）
+# 用法：  bash tool/build_adhoc.sh
 #
 # 前置条件：
 #   1) 付费 Apple Developer，目标设备 UDID 已在后台登记。
@@ -30,18 +28,6 @@ GIT_NAME="Your Name"
 # 安装页底部想多说一句就填这里（HTML），不需要就留空
 EXTRA_TIP=""
 # ================================================================
-
-# debug 通道：ipa / manifest / 安装页都带 -debug 后缀，正式页原封不动。
-# 同一个 bundle id —— 手机上测试版会直接覆盖正式版（本来就是同一个 app）。
-CHANNEL="${1:-}"
-SUFFIX=""
-if [ "$CHANNEL" = "debug" ]; then
-  SUFFIX="-debug"
-  TITLE="${TITLE} 测试版"
-elif [ -n "$CHANNEL" ]; then
-  echo "未知通道：$CHANNEL（只支持 debug 或不带参数）" >&2
-  exit 1
-fi
 
 PBX="${APP_NAME}.xcodeproj/project.pbxproj"
 WORK="/tmp/${APP_SLUG}-adhoc"
@@ -116,7 +102,7 @@ mkdir -p "$APPDIR"
 
 echo "==> 上传 ipa 到 Releases（不进 git）"
 # gh 拿**文件名**当 asset 名，所以上传前先改成最终要的名字
-staged="$WORK/${APP_NAME}${SUFFIX}.ipa"
+staged="$WORK/${APP_NAME}.ipa"
 cp "$ipa" "$staged"
 # release 不存在就先建一个（只会执行一次）
 gh release view "$RELEASE_TAG" --repo "$REPO" >/dev/null 2>&1 || \
@@ -127,12 +113,12 @@ gh release upload "$RELEASE_TAG" "$staged" --clobber --repo "$REPO"
 
 # 描述里写上版本号，从 Releases 页面一眼看得到当前是哪一版
 gh release edit "$RELEASE_TAG" --repo "$REPO" --notes \
-"- **${TITLE}** \`${ver}${SUFFIX}\` · $(date '+%m-%d %H:%M') — [安装页](${APPBASE}/install${SUFFIX}.html)
+"- **${TITLE}** \`${ver}\` · $(date '+%m-%d %H:%M') — [安装页](${APPBASE}/install.html)
 
 安装包每次发版覆盖同名文件，这里永远是最新的一份。
 iOS 必须从安装页装（\`itms-services\`），直接下 ipa 装不上。" >/dev/null
 
-cat > "$APPDIR/manifest${SUFFIX}.plist" <<EOF
+cat > "$APPDIR/manifest.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -146,7 +132,7 @@ cat > "$APPDIR/manifest${SUFFIX}.plist" <<EOF
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>${RELEASE_BASE}/${APP_NAME}${SUFFIX}.ipa</string>
+					<string>${RELEASE_BASE}/${APP_NAME}.ipa</string>
 				</dict>
 			</array>
 			<key>metadata</key>
@@ -167,8 +153,8 @@ cat > "$APPDIR/manifest${SUFFIX}.plist" <<EOF
 EOF
 
 # 安装页整页重新生成（版本号直接嵌入，避免 sed 改旧页的脆弱性）
-ITMS="itms-services://?action=download-manifest&amp;url=${APPBASE}/manifest${SUFFIX}.plist"
-cat > "$APPDIR/install${SUFFIX}.html" <<EOF
+ITMS="itms-services://?action=download-manifest&amp;url=${APPBASE}/manifest.plist"
+cat > "$APPDIR/install.html" <<EOF
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -229,7 +215,7 @@ EOF
 
 git -C "$DIST" add -A
 if git -C "$DIST" -c user.email="$GIT_EMAIL" -c user.name="$GIT_NAME" \
-     commit -q -m "release ${APP_SLUG} ${ver}${SUFFIX}"; then
+     commit -q -m "release ${APP_SLUG} ${ver}"; then
   # 不能写 `git push && echo ok`：set -e 对 && 列表中非最后一个命令的失败不生效，
   # push 失败会被静默咽掉、脚本继续宣布“已发布”（踩过）。
   #
@@ -253,7 +239,7 @@ if [ "$(git -C "$DIST" rev-parse HEAD)" != "$(git -C "$DIST" rev-parse origin/ma
 fi
 
 echo ""
-echo "✅ 版本 ${ver}${SUFFIX} 已发布（远程 HEAD 已核对一致）。约 1 分钟后 Pages 生效。"
+echo "✅ 版本 ${ver} 已发布（远程 HEAD 已核对一致）。约 1 分钟后 Pages 生效。"
 echo ""
 echo "安装页（Safari 打开）："
-echo "    ${APPBASE}/install${SUFFIX}.html"
+echo "    ${APPBASE}/install.html"
