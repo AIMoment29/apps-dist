@@ -1,0 +1,7 @@
+# 安装包一律走 GitHub Releases，不进 git ——
+# 进来一次就永久留在历史里，apps-dist 曾因此攒到 177MB
+multiai/*.ipa
+multiai/*.zip
+multiai/*.dmg
+shareprobe/*.ipa
+shareprobe/*.zip
