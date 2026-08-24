@@ -63,10 +63,10 @@
   <div class="tips">
     <h3>iOS 26 必看：先设置 JIT-less</h3>
     iOS 26 上导入 App 后启动会报 <b>“JITLess mode is required”</b>，这是 iOS 26 的限制，必须先在 ContainerBox 里<b>导入一张签名证书</b>（它用来在手机上给 App 签名）。一台设备只需设置一次。<br><br>
-    1. 向<b>管理员私下要证书文件</b> <code>.p12</code> 和它的密码<br>
-    　　（<b>证书不放这里</b>——它是签名私钥，公开就会被吊销、导致所有人都用不了）<br>
-    2. 把 <code>.p12</code> 存进手机「文件」App（如 iCloud 云盘）<br>
-    3. ContainerBox → <b>设置 → Import Certificate</b> → 选这个 <code>.p12</code> → 输入密码<br>
+    证书 <code>.p12</code> 和密码都存在 <b>1Password</b> 里（签名私钥不放公开页面，找管理员要该条目的访问权）。<br><br>
+    1. 手机装 <b>1Password</b> App 并登录 → 打开那条证书条目<br>
+    2. 把条目里附带的 <code>.p12</code> 文件<b>存到「文件」App</b>：点附件 → 分享 <svg viewBox="0 0 24 24" width="12" height="12" style="vertical-align:-1px" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M8 7l4-4 4 4M4 13v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg> → <b>存储到文件</b>（密码就在同一条目里，复制备用）<br>
+    3. ContainerBox → <b>设置 → Import Certificate</b> → 从「文件」选这个 <code>.p12</code> → 粘贴 1Password 里的密码<br>
     4. 成功后回去重开 App 即可。iOS 26 以下（如 iPhone 11）可跳过这步<br>
     <span style="color:var(--label2)">导入后若仍起不来：设置里的 <b>JITLess Diagnose</b> 页看哪项异常。</span>
   </div>
