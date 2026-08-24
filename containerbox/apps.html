@@ -32,6 +32,7 @@
     border-top:1px solid var(--sep); padding-top:16px; }
   .tips b{ color:var(--label); }
   .tips h3{ color:var(--label); font-size:13px; margin:14px 0 4px; }
+  .tips code{ background:#F1EADA; border:1px solid var(--sep); border-radius:5px; padding:1px 5px; font-size:12px; }
   .warn{ background:#FBF0E4; border:1px solid #E9D3B7; border-radius:12px; padding:11px 13px;
     color:#7A4B18; font-size:12.5px; line-height:1.7; margin-top:14px; }
   .back{ display:block; text-align:center; margin-top:16px; color:var(--label2); font-size:13px; text-decoration:none; }
@@ -57,6 +58,17 @@
     2. 打开 <b>ContainerBox → Apps → 右上「+」</b> → 从「文件」选刚下的 ipa 导入<br>
     3. 想多开：给它<b>新建多个容器</b>（每个容器 = 一份独立数据 = 一个登录）<br>
     <span style="color:var(--label2)">也可在 ContainerBox「从 URL 添加」里粘贴上面的下载链接，直接在手机上下。</span>
+  </div>
+
+  <div class="tips">
+    <h3>iOS 26 必看：先设置 JIT-less</h3>
+    iOS 26 上导入 App 后启动会报 <b>“JITLess mode is required”</b>，这是 iOS 26 的限制，必须先在 ContainerBox 里<b>导入一张签名证书</b>（它用来在手机上给 App 签名）。一台设备只需设置一次。<br><br>
+    1. 向<b>管理员私下要证书文件</b> <code>.p12</code> 和它的密码<br>
+    　　（<b>证书不放这里</b>——它是签名私钥，公开就会被吊销、导致所有人都用不了）<br>
+    2. 把 <code>.p12</code> 存进手机「文件」App（如 iCloud 云盘）<br>
+    3. ContainerBox → <b>设置 → Import Certificate</b> → 选这个 <code>.p12</code> → 输入密码<br>
+    4. 成功后回去重开 App 即可。iOS 26 以下（如 iPhone 11）可跳过这步<br>
+    <span style="color:var(--label2)">导入后若仍起不来：设置里的 <b>JITLess Diagnose</b> 页看哪项异常。</span>
   </div>
 
   <div class="warn">
