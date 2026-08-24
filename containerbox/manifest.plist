@@ -7,7 +7,7 @@
 </dict></array>
 <key>metadata</key><dict>
 <key>bundle-identifier</key><string>com.aimoment.containerbox</string>
-<key>bundle-version</key><string>3.8.7-aim.2</string>
+<key>bundle-version</key><string>3.8.7-aim.4</string>
 <key>kind</key><string>software</string>
 <key>title</key><string>ContainerBox</string>
 </dict></dict></array></dict></plist>
