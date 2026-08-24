@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ContainerBox 客体 App</title>
+<style>
+  :root{ --bg:#F7F4EC; --card:#fff; --label:#1A1A1A; --label2:#6B655C; --accent:#8A5A2B; --sep:#E4DED2; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; background:var(--bg); color:var(--label);
+    font-family:-apple-system,"SF Pro Text",system-ui,"PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; padding:28px; }
+  .card{ width:100%; max-width:460px; background:var(--card); border-radius:22px;
+    padding:28px 24px 24px; border:1px solid var(--sep); box-shadow:0 20px 50px -24px rgba(0,0,0,.18); }
+  h1{ font-size:22px; margin:0 0 2px; text-align:center; }
+  .sub{ color:var(--label2); font-size:13px; text-align:center; margin-bottom:20px; }
+  .app{ display:flex; align-items:center; gap:13px; padding:14px 0; border-top:1px solid var(--sep); }
+  .app:first-of-type{ border-top:none; }
+  .ico{ width:46px; height:46px; border-radius:11px; flex:0 0 auto;
+    background:linear-gradient(160deg,#42C767,#17A34A);
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:22px; font-weight:700; }
+  .meta{ flex:1; min-width:0; }
+  .meta b{ font-size:16px; }
+  .meta span{ display:block; color:var(--label2); font-size:12px; margin-top:2px; }
+  a.dl{ flex:0 0 auto; background:var(--accent); color:#fff; text-decoration:none;
+    border-radius:11px; padding:9px 16px; font-size:14px; font-weight:600; white-space:nowrap; }
+  .tips{ color:var(--label2); font-size:13px; line-height:1.75; margin-top:20px;
+    border-top:1px solid var(--sep); padding-top:16px; }
+  .tips b{ color:var(--label); }
+  .tips h3{ color:var(--label); font-size:13px; margin:14px 0 4px; }
+  .warn{ background:#FBF0E4; border:1px solid #E9D3B7; border-radius:12px; padding:11px 13px;
+    color:#7A4B18; font-size:12.5px; line-height:1.7; margin-top:14px; }
+  .back{ display:block; text-align:center; margin-top:16px; color:var(--label2); font-size:13px; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>客体 App</h1>
+  <div class="sub">导进 <b>ContainerBox</b> 里跑的 App · 不是独立安装</div>
+
+  <div class="app">
+    <div class="ico">微</div>
+    <div class="meta"><b>微信 WeChat</b><span>8.0.76 · 368MB · 已脱壳</span></div>
+    <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.76.ipa">下载</a>
+  </div>
+
+  <div class="tips">
+    <h3>怎么用</h3>
+    1. 点上面「下载」→ ipa 存到「文件」App（用 Wi-Fi，约 368MB）<br>
+    2. 打开 <b>ContainerBox → Apps → 右上「+」</b> → 从「文件」选刚下的 ipa 导入<br>
+    3. 想多开：给它<b>新建多个容器</b>（每个容器 = 一份独立数据 = 一个登录）<br>
+    <span style="color:var(--label2)">也可在 ContainerBox「从 URL 添加」里粘贴上面的下载链接，直接在手机上下。</span>
+  </div>
+
+  <div class="warn">
+    ⚠️ <b>只登小号 / 老号</b>，别登主号。脱壳 + 多开微信有<b>封号风险，新号（不满 3 个月）尤其容易被封</b>。包已做过静态扫描无注入篡改，但不能 100% 保证，谨慎使用。
+  </div>
+
+  <a class="back" href="install.html">‹ 回 ContainerBox 安装页</a>
+</div>
+</body>
+</html>
