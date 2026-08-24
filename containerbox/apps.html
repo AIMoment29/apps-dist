@@ -22,8 +22,12 @@
   .meta{ flex:1; min-width:0; }
   .meta b{ font-size:16px; }
   .meta span{ display:block; color:var(--label2); font-size:12px; margin-top:2px; }
-  a.dl{ flex:0 0 auto; background:var(--accent); color:#fff; text-decoration:none;
+  .acts{ flex:0 0 auto; display:flex; flex-direction:column; gap:6px; align-items:stretch; }
+  a.dl{ background:var(--accent); color:#fff; text-decoration:none; text-align:center;
     border-radius:11px; padding:9px 16px; font-size:14px; font-weight:600; white-space:nowrap; }
+  button.copy{ font-family:inherit; cursor:pointer; background:transparent; color:var(--accent);
+    border:1px solid var(--sep); border-radius:11px; padding:7px 16px; font-size:13px; font-weight:600; white-space:nowrap; }
+  button.copy.done{ color:#17A34A; border-color:#B7E3C4; background:#F0FAF3; }
   .tips{ color:var(--label2); font-size:13px; line-height:1.75; margin-top:20px;
     border-top:1px solid var(--sep); padding-top:16px; }
   .tips b{ color:var(--label); }
@@ -41,7 +45,10 @@
   <div class="app">
     <div class="ico">微</div>
     <div class="meta"><b>微信 WeChat</b><span>8.0.76 · 368MB · 已脱壳</span></div>
-    <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.76.ipa">下载</a>
+    <div class="acts">
+      <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.76.ipa">下载</a>
+      <button class="copy" data-url="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.76.ipa">复制链接</button>
+    </div>
   </div>
 
   <div class="tips">
@@ -58,5 +65,27 @@
 
   <a class="back" href="install.html">‹ 回 ContainerBox 安装页</a>
 </div>
+<script>
+document.querySelectorAll('button.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var url = btn.getAttribute('data-url');
+    var ok = function(){
+      var old = btn.textContent;
+      btn.textContent = '已复制 ✓'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(ok).catch(function(){ fallback(url, ok); });
+    } else { fallback(url, ok); }
+  });
+});
+function fallback(text, ok){
+  var t = document.createElement('textarea');
+  t.value = text; t.setAttribute('readonly',''); t.style.position='absolute'; t.style.left='-9999px';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); ok(); } catch(e){ prompt('复制这个链接：', text); }
+  document.body.removeChild(t);
+}
+</script>
 </body>
 </html>
