@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安装 AppBox</title>
+<style>
+  :root{ --bg:#F7F4EC; --card:#fff; --label:#1A1A1A; --label2:#6B655C; --accent:#8A5A2B; --sep:#E4DED2; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; background:var(--bg); color:var(--label);
+    font-family:-apple-system,"SF Pro Text",system-ui,"PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center; padding:28px; }
+  .card{ width:100%; max-width:440px; background:var(--card); border-radius:22px;
+    padding:30px 24px 26px; text-align:center; border:1px solid var(--sep);
+    box-shadow:0 20px 50px -24px rgba(0,0,0,.18); }
+  .icon{ width:82px; height:82px; border-radius:19px; margin:0 auto 16px;
+    background:linear-gradient(160deg,#C97B4A,#8A5A2B); display:flex; align-items:center;
+    justify-content:center; color:#fff; font-size:30px; font-weight:700; letter-spacing:-1px; }
+  h1{ font-size:22px; margin:0 0 4px; }
+  .ver{ color:var(--label2); font-size:14px; margin-bottom:22px; }
+  a.btn{ display:block; background:var(--accent); color:#fff; text-decoration:none;
+    border-radius:14px; padding:15px 0; font-size:17px; font-weight:600; }
+  .tips{ text-align:left; color:var(--label2); font-size:13px; line-height:1.75;
+    margin-top:22px; border-top:1px solid var(--sep); padding-top:16px; }
+  .tips b{ color:var(--label); }
+  .tips h3{ color:var(--label); font-size:13px; margin:16px 0 4px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">AB</div>
+  <h1>AppBox</h1>
+  <div class="ver">当前版本 <b>3.8.7</b>　·　容器多开工具</div>
+  <a class="btn" href="itms-services://?action=download-manifest&amp;url=https://aimoment29.github.io/apps-dist/appbox/manifest.plist">安装</a>
+  <div class="tips">
+    <h3>装 AppBox 本体</h3>
+    1. 必须在 <b>Safari</b> 打开本页（微信里点「···」→ 在浏览器打开）<br>
+    2. 点「安装」→ 回桌面等装完<br>
+    3. 打不开时：设置 → 通用 → <b>VPN与设备管理</b> → 信任证书；或 隐私与安全性 → <b>开发者模式</b> → 开启<br>
+    4. 「Unable to Verify」→ 关 VPN 或换蜂窝网络再点图标
+    <h3>用 AppBox 多开微信</h3>
+    5. 先准备一个<b>已解密的微信 IPA</b>（App Store 原版带加密，装进去会闪退）<br>
+    6. 打开 AppBox → Apps → 右上「+」导入微信 IPA<br>
+    7. 想多开：给微信<b>新建多个容器</b>（每个容器 = 一份独立数据 = 一个登录）<br>
+    8. iOS 26 以下建议开 JIT（配合 SideStore/StikJIT）或在设置里导入签名证书，否则子 App 可能签名失败
+  </div>
+</div>
+</body>
+</html>
