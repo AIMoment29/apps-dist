@@ -17,8 +17,11 @@
   .app{ display:flex; align-items:center; gap:13px; padding:14px 0; border-top:1px solid var(--sep); }
   .app:first-of-type{ border-top:none; }
   .ico{ width:46px; height:46px; border-radius:11px; flex:0 0 auto;
-    background:linear-gradient(160deg,#42C767,#17A34A);
     display:flex; align-items:center; justify-content:center; color:#fff; font-size:22px; font-weight:700; }
+  .ico.wx{ background:linear-gradient(160deg,#42C767,#17A34A); }
+  .ico.dy{ background:linear-gradient(160deg,#2E2E38,#0B0B10); }
+  .tag{ display:inline-block; margin-left:6px; vertical-align:1px; font-size:10.5px; font-weight:600;
+    color:var(--accent); background:#F5EADA; border:1px solid #E9DCC4; border-radius:5px; padding:0 5px; }
   .meta{ flex:1; min-width:0; }
   .meta b{ font-size:16px; }
   .meta span{ display:block; color:var(--label2); font-size:12px; margin-top:2px; }
@@ -44,7 +47,7 @@
   <div class="sub">导进 <b>ContainerBox</b> 里跑的 App · 不是独立安装</div>
 
   <div class="app">
-    <div class="ico">微</div>
+    <div class="ico wx">微</div>
     <div class="meta"><b>微信 WeChat</b><span>8.0.76 · 368MB · 已脱壳</span></div>
     <div class="acts">
       <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.76.ipa">下载</a>
@@ -52,12 +55,31 @@
     </div>
   </div>
 
+  <div class="app">
+    <div class="ico wx">微</div>
+    <div class="meta"><b>微信 WeChat<span class="tag">旧版</span></b><span>8.0.70 · 317MB · 已脱壳</span></div>
+    <div class="acts">
+      <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.70.ipa">下载</a>
+      <button class="copy" data-url="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/wechat-8.0.70.ipa">复制链接</button>
+    </div>
+  </div>
+
+  <div class="app">
+    <div class="ico dy">抖</div>
+    <div class="meta"><b>抖音 Douyin</b><span>40.1.0 · 626MB · 已脱壳</span></div>
+    <div class="acts">
+      <a class="dl" href="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/douyin-40.1.0.ipa">下载</a>
+      <button class="copy" data-url="https://github.com/AIMoment29/apps-dist/releases/download/containerbox-apps/douyin-40.1.0.ipa">复制链接</button>
+    </div>
+  </div>
+
   <div class="tips">
     <h3>怎么用</h3>
-    1. 点上面「下载」→ ipa 存到「文件」App（用 Wi-Fi，约 368MB）<br>
+    1. 点上面「下载」→ ipa 存到「文件」App（包都是几百 MB，用 Wi-Fi）<br>
     2. 打开 <b>ContainerBox → Apps → 右上「+」</b> → 从「文件」选刚下的 ipa 导入<br>
     3. 想多开：给它<b>新建多个容器</b>（每个容器 = 一份独立数据 = 一个登录）<br>
-    <span style="color:var(--label2)">也可在 ContainerBox「从 URL 添加」里粘贴上面的下载链接，直接在手机上下。</span>
+    <span style="color:var(--label2)">也可在 ContainerBox「从 URL 添加」里粘贴上面的下载链接，直接在手机上下。</span><br>
+    <span style="color:var(--label2)">微信 <b>8.0.76 在 iOS 26 上导入后起不来</b>（初始化时序问题）；遇到就换<b>旧版 8.0.70</b> 那条试。</span>
   </div>
 
   <div class="tips">
@@ -72,7 +94,7 @@
   </div>
 
   <div class="warn">
-    ⚠️ <b>只登小号 / 老号</b>，别登主号。脱壳 + 多开微信有<b>封号风险，新号（不满 3 个月）尤其容易被封</b>。包已做过静态扫描无注入篡改，但不能 100% 保证，谨慎使用。
+    ⚠️ <b>只登小号 / 老号</b>，别登主号。脱壳 + 多开微信 / 抖音都有<b>封号风险，新号（不满 3 个月）尤其容易被封</b>。包已做过静态扫描（cryptid=0、无注入 dylib、扩展全为官方、bundle id 与版本相符），但静态扫描排不掉「后门直接编进主程序」这种篡改，不能 100% 保证，谨慎使用。
   </div>
 
   <a class="back" href="install.html">‹ 回 ContainerBox 安装页</a>
